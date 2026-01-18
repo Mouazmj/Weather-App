@@ -37,6 +37,8 @@ async function checkWether (city) {
                         icon.src = './images/snow.png';
                         break;
    }
+
+   document.querySelector('.weather').style.display = 'block'
 }
 
 button.addEventListener('click', () => {
