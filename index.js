@@ -10,7 +10,13 @@ async function checkWether (city) {
    const res = await fetch(apiUrl + city + `&appid=${apiKey}`)
    const data = await res.json()
 
-   console.log(data)
+   if (input.value && data.name !== input.value) {
+    document.querySelector('.error').style.display = 'block'
+   } else if (input.value === '') {
+    document.querySelector('.error').innerHTML = 'Enter a city name'
+    document.querySelector('.error').style.display = 'block'
+   }
+
 
    document.querySelector('.temp').innerHTML = Math.round(data.main.temp) + '°c'
    document.querySelector('.city').innerHTML = data.name
@@ -37,6 +43,7 @@ async function checkWether (city) {
                         icon.src = './images/snow.png';
                         break;
    }
+
 
    document.querySelector('.weather').style.display = 'block'
 }
